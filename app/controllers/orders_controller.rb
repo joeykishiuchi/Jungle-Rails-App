@@ -2,12 +2,14 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    condition = "line_items.order_id = #{@order.id}"
+    @product = Product.joins(:line_item).where(condition)
+    
   end
 
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
-
     if order.valid?
       empty_cart!
       redirect_to order, notice: 'Your Order has been placed.'
