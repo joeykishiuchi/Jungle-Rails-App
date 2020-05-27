@@ -5,7 +5,6 @@ class OrdersController < ApplicationController
     condition = "line_items.order_id = #{@order.id}"
     @products = Product.joins(:line_item).where(condition)
     @line_items = LineItem.where(condition)
-    
   end
 
   def create
