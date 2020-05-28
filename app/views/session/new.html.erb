@@ -1,7 +1,7 @@
 <div class='login-form'>
   <h1 class='form-header'>Welcome back!</h1>
 
-  <%= form_for '/login' do |f|%>
+  <%= form_for :user, url: '/login' do |f|%>
     <div class="form-group">
       <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
     </div>
