@@ -11,7 +11,7 @@ RSpec.describe User, type: :model do
       })
       expect(@user.save).to eq(true)
     end
-    it "saves user with all necessary fields" do
+    it "should give error if :name is not given" do
       @user = User.new({
         :name => nil,
         :email => 'john.smith@gmail.com',
@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.errors.full_messages).to eq(["Name can't be blank"])
     end
-    it "saves user with all necessary fields" do
+    it "should give error if :email is not given" do
       @user = User.new({
         :name => 'John Smith',
         :email => nil,
@@ -47,6 +47,17 @@ RSpec.describe User, type: :model do
       })
       expect(@user.save).to eq(false)
     end
+    it "should give error if password or password_confirmation is not given" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>nil,
+        :password_confirmation => nil
+      })
+      @user.save
+      expect(@user.errors.full_messages).to eq(["Password can't be blank", "Password can't be blank", "Password is too short (minimum is 8 characters)", "Password confirmation can't be blank"])
+    end
+
 
   end
 
