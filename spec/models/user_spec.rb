@@ -113,6 +113,28 @@ RSpec.describe User, type: :model do
       user = User.authenticate_with_credentials('john.smith@gmail.com', 'wordpass')
       expect(user).to eq(false)
     end
+    it "should allow user to login with padded spacing around email" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>'password',
+        :password_confirmation => 'password'
+      })
+      @user.save
+      user = User.authenticate_with_credentials('  john.smith@gmail.com  ', 'password')
+      expect(user.name).to eq("John Smith")
+    end
+    it "should allow user to login with the same email but different casing" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>'password',
+        :password_confirmation => 'password'
+      })
+      @user.save
+      user = User.authenticate_with_credentials('John.Smith@gmail.com', 'password')
+      expect(user.name).to eq("John Smith")
+    end
   end
 
 end
