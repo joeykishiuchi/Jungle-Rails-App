@@ -77,14 +77,42 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.save).to eq(false)
     end
-
-
-
-
   end
 
   describe '.authenticate_with_credentials' do
-    # examples for this class method here
+    it "should allow user to login with proper credentials" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>'password',
+        :password_confirmation => 'password'
+      })
+      @user.save
+      user = User.authenticate_with_credentials('john.smith@gmail.com', 'password')
+      expect(user.name).to eq('John Smith')
+    end
+    it "should not allow user to login with invalid email" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>'password',
+        :password_confirmation => 'password'
+      })
+      @user.save
+      user = User.authenticate_with_credentials('jason.smyth@gmail.com', 'password')
+      expect(user).to eq(nil)
+    end
+    it "should not allow user to login with invalid password" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>'password',
+        :password_confirmation => 'password'
+      })
+      @user.save
+      user = User.authenticate_with_credentials('john.smith@gmail.com', 'wordpass')
+      expect(user).to eq(false)
+    end
   end
 
 end
