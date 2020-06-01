@@ -21,6 +21,16 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.errors.full_messages).to eq(["Name can't be blank"])
     end
+    it "saves user with all necessary fields" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => nil,
+        :password => 'password',
+        :password_confirmation => 'password'
+      })
+      @user.save
+      expect(@user.errors.full_messages).to eq(["Email can't be blank"])
+    end
 
   end
 
