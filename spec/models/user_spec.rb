@@ -57,7 +57,7 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.errors.full_messages).to eq(["Password can't be blank", "Password is too short (minimum is 8 characters)", "Password confirmation can't be blank"])
     end
-    it "should give error if password and password_confirmation do not match" do
+    it "should not save if password and password_confirmation do not match" do
       @user = User.new({
         :name => 'John Smith',
         :email => 'john.smith@gmail.com',
@@ -67,6 +67,17 @@ RSpec.describe User, type: :model do
       @user.save
       expect(@user.save).to eq(false)
     end
+    it "should not save if password is shorter than 8 characters" do
+      @user = User.new({
+        :name => 'John Smith',
+        :email => 'john.smith@gmail.com',
+        :password =>'toshort',
+        :password_confirmation => 'toshort'
+      })
+      @user.save
+      expect(@user.save).to eq(false)
+    end
+
 
 
 
