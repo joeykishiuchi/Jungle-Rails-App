@@ -21,11 +21,11 @@ RSpec.feature "Visitor navigates to product page", type: :feature, js: true do
     # ACT
     visit root_path
 
-    page.find_button("Add", match: :first).click
-    
-    expect(page).to have_css('article.product')
-      
     cart = find_link("My Cart")
+
+    expect(cart).to have_text('0')
+
+    page.find_button("Add", match: :first).click
 
     expect(cart).to have_text('1')
   end
