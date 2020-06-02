@@ -25,7 +25,7 @@ RSpec.feature "Visitor navigates to product page", type: :feature, js: true do
 
     expect(cart).to have_text('0')
 
-    page.find_button("Add", match: :first).click
+    page.find(".btn", match: :first).click
 
     expect(cart).to have_text('1')
   end
