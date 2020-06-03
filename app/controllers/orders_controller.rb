@@ -5,9 +5,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @line_items = @order.line_items
-    @line_items.each do |line_item|
-      puts line_item.product.name
-    end
+
+    # Sends customer an email receipt when order has successfully been placed
     UserMailer.order_receipt(@order, @line_items).deliver
   end
 
@@ -36,7 +35,7 @@ class OrdersController < ApplicationController
     Stripe::Charge.create(
       source:      params[:stripeToken],
       amount:      cart_subtotal_cents,
-      description: "Khurram Virani's Jungle Order",
+      description: "#{current_user.first_name}'s Jungle Order",
       currency:    'cad'
     )
   end
