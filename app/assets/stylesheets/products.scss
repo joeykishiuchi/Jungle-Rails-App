@@ -83,6 +83,30 @@ main section.products-show {
       max-width: 100%;
     }
   }
+
+  .reviews {
+    margin-top: 50px;
+    border-top: 1px solid #ccc;
+    .reviews-header {
+      font-size: 30px;
+    }
+    .review {
+      padding: 8px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+
+      .review-title {
+        font-size: 17px;
+        border-bottom: 1px solid #ccc;
+      }
+      .review-body {
+        font-size: 24px;
+      }
+      .review-footer {
+        font-size: 20px;
+      }
+    }
+  }
 }
 
 

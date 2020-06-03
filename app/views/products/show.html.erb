@@ -28,8 +28,9 @@
 
   </article>
   <div class="reviews">
+    <h3 class="reviews-header">Customer Reviews</h3>
     <% @reviews.each do |review| %>
-      <%= render 'card', review: review %>
+        <%= render 'card', review: review %>
     <% end %>
   </div>
 
