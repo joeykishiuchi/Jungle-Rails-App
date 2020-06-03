@@ -7,6 +7,8 @@ class OrdersController < ApplicationController
     condition = "line_items.order_id = #{@order.id}"
     @products = Product.joins(:line_item).where(condition)
     @line_items = LineItem.where(condition)
+
+    UserMailer.order_receipt(@order, @products).deliver
   end
 
   def create
@@ -41,7 +43,7 @@ class OrdersController < ApplicationController
 
   def create_order(stripe_charge)
     order = Order.new(
-      email: params[:stripeEmail],
+      email: current_user.email,
       total_cents: cart_subtotal_cents,
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
