@@ -147,6 +147,15 @@ user = User.new(
 )
 user.save!
 
+user2 = User.new(
+  first_name: "Jane",
+  last_name: "Doe",
+  email: "jane.doe@example.com",
+  password: "password",
+  password_confirmation: "password"
+)
+user2.save!
+
 ## REVIEWS 
 
 prod1.reviews.create!({
@@ -166,6 +175,24 @@ prod3.reviews.create!({
   user_id: 1,
   description:"I've seen better",
   rating: 2
+})
+prod1.reviews.create!({
+  product_id: 1,
+  user_id: 2,
+  description:"This is okay",
+  rating: 3
+})
+prod2.reviews.create!({
+  product_id: 2,
+  user_id: 2,
+  description:"A bit pricey",
+  rating: 3
+})
+prod3.reviews.create!({
+  product_id: 3,
+  user_id: 2,
+  description:"Useless",
+  rating: 1
 })
 
 
