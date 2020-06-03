@@ -27,5 +27,10 @@
     </div>
 
   </article>
+  <div class="reviews">
+    <% @reviews.each do |review| %>
+      <%= render 'card', review: review %>
+    <% end %>
+  </div>
 
 </section>

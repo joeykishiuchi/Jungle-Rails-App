@@ -1,0 +1,11 @@
+<div class="card">
+  <div class="card-title">
+    <%= "#{review.user.first_name} #{review.user.last_name} (#{review.user.email})" %>
+  </div>
+  <div class="card-body">
+    <%= review.description %>
+  </div>
+  <div class="card-footer">
+    <%=  "Rating: #{review.rating}/5" %>
+  </div
+</div>
