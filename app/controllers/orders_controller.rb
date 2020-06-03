@@ -4,11 +4,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    condition = "line_items.order_id = #{@order.id}"
-    @products = Product.joins(:line_item).where(condition)
-    @line_items = LineItem.where(condition)
-
-    UserMailer.order_receipt(@order, @products).deliver
+    @line_items = @order.line_items
+    @line_items.each do |line_item|
+      puts line_item.product.name
+    end
+    UserMailer.order_receipt(@order, @line_items).deliver
   end
 
   def create

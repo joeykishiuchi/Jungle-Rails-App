@@ -1,10 +1,10 @@
-class UserMailer < ActionMailer::Base
+class UserMailer < ApplicationMailer
 
-  def order_receipt(order, products)
+  def order_receipt(order, line_items)
     
     @order = order
-    @products = products
-    mail(to: @order.email, from: 'no-reply@jungle.com', subject: "Here is your receipt for order number: #{@order.id}")
+    @line_items = line_items
+    mail(to: @order.email, subject: "Here is your receipt for order number: #{@order.id}")
   end
 
 end
