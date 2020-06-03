@@ -132,5 +132,41 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+prod1 = Product.find(1)
+prod2 = Product.find(2)
+prod3 = Product.find(3)
+
+## USERS 
+
+user = User.new(
+  first_name: "John",
+  last_name: "Smith",
+  email: "john.smith@example.com",
+  password: "password",
+  password_confirmation: "password"
+)
+user.save!
+
+## REVIEWS 
+
+prod1.reviews.create!({
+  product_id: 1,
+  user_id: 1,
+  description:"This is awesome",
+  rating: 5
+})
+prod2.reviews.create!({
+  product_id: 2,
+  user_id: 1,
+  description:"Very cool!",
+  rating: 4
+})
+prod3.reviews.create!({
+  product_id: 3,
+  user_id: 1,
+  description:"I've seen better",
+  rating: 2
+})
+
 
 puts "DONE!"
