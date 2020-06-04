@@ -4,6 +4,11 @@ A mini e-commerce application built with Rails 4.2 adopted from Lighthouse Labs.
 
 ## Screenshots 
 
+!["Homepage"](https://github.com/joeykishiuchi/Jungle-Rails-App/blob/master/app/assets/images/products.png?raw=true)
+!["Cart"](https://github.com/joeykishiuchi/Jungle-Rails-App/blob/master/app/assets/images/my_cart.png?raw=true)
+!["Order Receipt"](https://github.com/joeykishiuchi/Jungle-Rails-App/blob/master/app/assets/images/order_receipt.png?raw=true)
+!["Signup Page"](https://github.com/joeykishiuchi/Jungle-Rails-App/blob/master/app/assets/images/signup.png?raw=true)
+
 ## Setup
 
 1. Run `bundle install` to install dependencies
@@ -16,10 +21,6 @@ A mini e-commerce application built with Rails 4.2 adopted from Lighthouse Labs.
 8. Run `bin/rails s -b 0.0.0.0` to start the server
 
 ## Stripe Testing
-
-!["Homepage"]()
-!["Cart"]()
-!["Order Receipt"]()
 
 Use Credit Card # 4242 4242 4242 4242 for testing success scenarios.
 
