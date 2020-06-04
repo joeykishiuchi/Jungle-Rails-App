@@ -5,7 +5,8 @@ class SessionController < ApplicationController
 
   def create
     # Checks if user exists and password entered is correct
-    if (user = User.authenticate_with_credentials(user_params[:email], user_params[:password]))
+    user = User.authenticate_with_credentials(user_params[:email], user_params[:password])
+    if (user)
       session[:user_id] = user.id
       redirect_to '/'
     else

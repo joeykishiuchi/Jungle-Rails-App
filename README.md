@@ -1,7 +1,8 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+A mini e-commerce application built with Rails 4.2 adopted from Lighthouse Labs. The purpose of this project was to mimic real-life dev situations such as fixing bugs and implementing features based on legacy code, as well as learning Ruby on Rails.
 
+## Screenshots 
 
 ## Setup
 
@@ -16,7 +17,11 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Stripe Testing
 
-Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
+!["Homepage"]()
+!["Cart"]()
+!["Order Receipt"]()
+
+Use Credit Card # 4242 4242 4242 4242 for testing success scenarios.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
